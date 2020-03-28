@@ -25,7 +25,6 @@
                 <div>
                     <a class="navbar-brand" href="/">
                         <img src="{{ asset('logo.png') }}" alt="logo">
-    
                     </a>
                     <span class="navbar-text">
                        OCR Text Annotation Tool
@@ -38,16 +37,26 @@
               
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
+
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/annotation">Annotation</a>
+                        </li>
+
                         <li class="nav-item active">
                             <a class="nav-link" href="/login">Login</a>
                         </li>
+
                     </ul>
                 </div>
             </div>
         </nav>
-        <!-- Navbar -->
 
-        @yield('content')
+        <!-- Content -->
+        <div class="content">
+
+            @yield('content')
+
+        </div>
 
         <!-- Footer -->
         <footer class="footer font-small bg-gray pt-4">
@@ -98,7 +107,6 @@
             </div>
         
         </footer>
-        <!-- Footer -->
 
     </body>
 </html>

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Sentence;
+use App\User;
 use Illuminate\Http\Request;
 
-class SentenceController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class SentenceController extends Controller
      */
     public function index()
     {
-        $sentences = Sentence::latest()->get();
+        $users = User::latest()->get();
 
-        return view('sentences.index', compact('sentences'));
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -43,21 +43,23 @@ class SentenceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Sentence  $sentence
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(Sentence $sentence)
+    public function show(User $user)
     {
-        return view('sentences.show', compact('sentence'));
+        $user = User::find($user);
+
+        return view('users.show', compact('user'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Sentence  $sentence
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(Sentence $sentence)
+    public function edit(User $user)
     {
         //
     }
@@ -66,10 +68,10 @@ class SentenceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Sentence  $sentence
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Sentence $sentence)
+    public function update(Request $request, User $user)
     {
         //
     }
@@ -77,10 +79,10 @@ class SentenceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Sentence  $sentence
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sentence $sentence)
+    public function destroy(User $user)
     {
         //
     }

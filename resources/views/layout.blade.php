@@ -11,6 +11,7 @@
     
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/layout.css') }}" rel="stylesheet">
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
@@ -38,11 +39,29 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
 
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/annotation">Annotation</a>
+                        <li class="nav-item {{ Request::is('annotation') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('annotations.index') }}">Demo Annotation</a>
                         </li>
 
-                        <li class="nav-item active">
+                        <li class="nav-item dropdown {{ Request::is('pages*') ? 'active' : '' }}">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropDocuments" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Documents
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropDocuments">
+                                <a class="dropdown-item" href="{{ route('pages.create') }}"><i class="fas fa-plus"></i> New document</a>
+                                <a class="dropdown-item" href="{{ route('pages.index') }}"><i class="fas fa-list-ul"></i> List all</a>
+                            </div>
+                          </li>
+
+                        <li class="nav-item {{ Request::is('sentences') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('sentences.index') }}">Sentences</a>
+                        </li>
+
+                        <li class="nav-item {{ Request::is('users') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('users.index') }}">Users</a>
+                        </li>
+
+                        <li class="nav-item {{ Request::is('login') ? 'active' : '' }}">
                             <a class="nav-link" href="/login">Login</a>
                         </li>
 

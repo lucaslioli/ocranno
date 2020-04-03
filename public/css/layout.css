@@ -218,6 +218,10 @@ a {
   border-color: #007bff;
 }
 
+.badge-lg {
+  font-size: 90%;
+}
+
 .badge-primary {
   color: #fff;
   background-color: #007bff;

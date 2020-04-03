@@ -10,9 +10,12 @@ class AnnotationController extends Controller
     public function show()
     {
         // sort the sentence by user
-        $sentence = Sentence::where('correction', null)->first();
+        $sentence = Sentence::where('correction', null)->get()->random();
 
-        return view('annotation.show', ['sentence' => $sentence]);
+        return view('annotation.show', [
+            'sentence' => $sentence,
+            'page' => $sentence->page
+        ]);
     }
 
     public function annotate(Request $request, Sentence $sentence)

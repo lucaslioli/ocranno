@@ -19,6 +19,10 @@
                 <div class="sentences col-4">
 
                     <div class="form-group">
+                        <p>Page annotations: {{ $page->annotations.'/'.$page->wrong_words }}</p>
+                    </div>
+
+                    <div class="form-group">
                         <label for="exampleFormControlTextarea1">Sentence</label>
                         <textarea class="form-control" name="sentence" id="sentence" rows="2" readonly>{{ $sentence->sentence }}</textarea>
                     </div>

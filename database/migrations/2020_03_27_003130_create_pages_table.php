@@ -19,7 +19,11 @@ class CreatePagesTable extends Migration
             $table->integer('words_number');
             $table->integer('wrong_words');
             $table->integer('year')->nullable();
-            $table->foreignId('user_id')->nullable()->constrained();
+            $table->integer('annotations')->default(0);
+            $table->foreignId('user_id')
+                ->nullable()
+                ->constrained()
+                ->onDelete('set null');
             $table->timestamps();
         });
     }

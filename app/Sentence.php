@@ -11,4 +11,9 @@ class Sentence extends Model
         $this->correction = $correction;
         $this->save();
     }
+
+    public function page()
+    {
+        return $this->belongsTo(Page::class);
+    }
 }

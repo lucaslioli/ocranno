@@ -17,7 +17,9 @@ class CreateSentencesTable extends Migration
             $table->id();
             $table->string('sentence');
             $table->string('correction')->nullable();
-            $table->foreignId('page_id')->constrained();
+            $table->foreignId('page_id')
+                ->constrained()
+                ->onDelete('cascade');;
             $table->timestamps();
         });
     }

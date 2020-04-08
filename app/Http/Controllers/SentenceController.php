@@ -7,6 +7,17 @@ use Illuminate\Http\Request;
 
 class SentenceController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,64 +25,11 @@ class SentenceController extends Controller
      */
     public function index()
     {
-        $sentences = Sentence::latest()->get();
+        $this->authorize('id-admin');
+
+        $sentences = Sentence::all();
 
         return view('sentences.index', compact('sentences'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Sentence  $sentence
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Sentence $sentence)
-    {
-        return view('sentences.show', compact('sentence'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Sentence  $sentence
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Sentence $sentence)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Sentence  $sentence
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Sentence $sentence)
-    {
-        //
     }
 
     /**

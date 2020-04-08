@@ -1,9 +1,9 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
     
     <div class="container">
-        <h1>New Document's Page</h1>
+        <h1>New Document Page</h1>
 
         <form method="POST" action="/pages" class="{{ $errors->first() ? 'was-validated' : '' }}">
             @csrf

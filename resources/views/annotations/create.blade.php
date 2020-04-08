@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
 
@@ -7,7 +7,7 @@
             @csrf
             @method('PUT')
 
-        <div class="annotation row">
+            <div class="annotation row">
 
                 <div class="pdf-page col-8">
                     <small id="findHelpBlock" class="form-text text-muted">
@@ -24,15 +24,17 @@
 
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Sentence</label>
-                        <textarea class="form-control" name="sentence" id="sentence" rows="2" readonly>{{ $sentence->sentence }}</textarea>
+                        <textarea class="form-control" name="sentence" id="sentence" rows="3" readonly>{{ $sentence->sentence }}</textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Correction</label>
-                        <textarea class="form-control" name="correction" id="correction" rows="2">{{ $sentence->sentence }}</textarea>
+                        <textarea class="form-control" name="correction" id="correction" rows="3">{{ $sentence->correction ? : $sentence->sentence }}</textarea>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Register</button>
+                    @can ('update', $sentence)
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Register</button>
+                    @endcan
 
                 </div>
 

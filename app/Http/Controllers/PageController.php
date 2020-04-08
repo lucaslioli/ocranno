@@ -9,6 +9,16 @@ class PageController extends Controller
 {
 
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Return a array with validated attributes
      * 
      * @param  \Illuminate\Http\Request  $request
@@ -33,7 +43,7 @@ class PageController extends Controller
     {
         $pages = Page::latest()->get();
 
-        return view('pages.index', ['pages' => $pages]);
+        return view('pages.index', compact('pages'));
     }
 
     /**
@@ -57,17 +67,6 @@ class PageController extends Controller
         Page::create($this->validatePage($request));
 
         return redirect(route('pages.index'));
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Page  $page
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Page $page)
-    {
-        return view('pages.show', compact('page'));
     }
 
     /**

@@ -11,7 +11,7 @@ class Page extends Model
 
     public function path()
     {
-        return route('pages.show', $this);
+        return route('pages.edit', $this);
     }
 
     public function user()

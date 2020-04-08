@@ -10,6 +10,8 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    const ADMIN_ROLE = 'admin';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -40,5 +42,10 @@ class User extends Authenticatable
     public function pages()
     {
         return $this->hasMany(Page::class);
+    }
+
+    public function isAdmin()
+    {
+        return $this->role === self::ADMIN_ROLE;
     }
 }

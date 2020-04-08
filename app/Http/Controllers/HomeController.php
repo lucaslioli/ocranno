@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class HomeController extends Controller
 {
-
     /**
      * Create a new controller instance.
      *
@@ -19,17 +17,12 @@ class UserController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Show the application dashboard.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
-        $this->authorize('id-admin');
-
-        $users = User::all();
-
-        return view('users.index', compact('users'));
+        return view('home');
     }
-
 }

@@ -2,28 +2,87 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use App\Page;
 use App\Sentence;
 use Illuminate\Http\Request;
 
 class AnnotationController extends Controller
 {
-    public function show()
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $sentences = Sentence::whereNotNull('correction')
+            ->whereIn('page_id', Auth::user()->pages->map->id)
+            ->get();
+        
+        return view('annotations.index', compact('sentences'));
+    }
+
+
+    /**
+     * Select randomly a page and display a sentence to be annotated
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
         // sort the sentence by user
-        $sentence = Sentence::where('correction', null)->get()->random();
+        $sentences = Sentence::where('correction', null)->get();
 
-        return view('annotation.show', [
+        if($sentences->isEmpty())
+            return view('empty');
+
+        $sentence = $sentences->random();
+
+        return view('annotations.create', [
             'sentence' => $sentence,
             'page' => $sentence->page
         ]);
     }
 
-    public function annotate(Request $request, Sentence $sentence)
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Sentence  $sentence
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Sentence $sentence)
     {
-        $sentence->correction = request('correction');
+        // Uses the same view as create
+        return view('annotations.create', [
+            'sentence' => $sentence,
+            'page' => $sentence->page
+        ]);
+    }
 
-        $sentence->save();
+    /**
+     * Updates the sentence with the correct annotation.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Sentence  $sentence
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Sentence $sentence)
+    {
+        $this->authorize('update', $sentence);
 
-        return redirect('/annotations');
+        $sentence->annotate(request('correction'));
+
+        return redirect(route('annotations.create'));
     }
 }

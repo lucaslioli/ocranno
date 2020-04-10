@@ -23,4 +23,10 @@ class Page extends Model
     {
         return $this->hasMany(Sentence::class);
     }
+
+    public function increment_annotations()
+    {
+        $this->annotations++;
+        $this->save();
+    }
 }

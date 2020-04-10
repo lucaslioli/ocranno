@@ -8,6 +8,9 @@ class Sentence extends Model
 {   
     public function annotate($correction)
     {
+        if($this->correction == null)
+            $this->page->increment_annotations();
+
         $this->correction = $correction;
         $this->save();
     }

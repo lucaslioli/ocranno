@@ -64,14 +64,8 @@
                             </li>
 
                             @can('id-admin')
-                                <li class="nav-item dropdown {{ Request::is('pages*') ? 'active' : '' }}">
-                                    <a class="nav-link dropdown-toggle" href="#" id="dropDocuments" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Documents
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="dropDocuments">
-                                        <a class="dropdown-item" href="{{ route('pages.create') }}"><i class="fas fa-plus"></i> New document</a>
-                                        <a class="dropdown-item" href="{{ route('pages.index') }}"><i class="fas fa-list-ul"></i> List all</a>
-                                    </div>
+                                <li class="nav-item {{ Request::is('pages') ? 'active' : '' }}">
+                                    <a class="nav-link" href="{{ route('pages.index') }}">Pages</a>
                                 </li>
 
                                 <li class="nav-item {{ Request::is('sentences') ? 'active' : '' }}">

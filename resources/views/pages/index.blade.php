@@ -9,10 +9,11 @@
         @foreach ($pages as $page)
 
             <h3>
-                <a href="{{ route('pages.edit', $page->id) }}">{{ $page->file_name }}</a>
+                {{ $page->id . " - " . $page->file_name }}
                 <small class="text-muted">
                     <i>Words:</i> {{ $page->words_number }} /
-                    <i>Wrong words:</i> {{ $page->wrong_words }}
+                    <i>Wrong words:</i> {{ $page->wrong_words }} /
+                    <i>Annotations:</i> {{ $page->annotations }}
                 </small>
             </h3>
             

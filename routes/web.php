@@ -26,10 +26,6 @@ Route::get('/users', 'UserController@index')->name('users.index');
 
 // Pages routes
 Route::get('/pages', 'PageController@index')->name('pages.index');
-Route::post('/pages', 'PageController@store');
-Route::get('/pages/create', 'PageController@create')->name('pages.create');
-Route::get('/pages/{page}/edit', 'PageController@edit')->name('pages.edit');
-Route::put('/pages/{page}', 'PageController@update');
 
 // Sentences routes
 Route::get('/sentences', 'SentenceController@index')->name('sentences.index');

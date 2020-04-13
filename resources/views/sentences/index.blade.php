@@ -4,7 +4,14 @@
 
     <div class="container">
 
-        <h1>Sentences</h1>
+        <div class="justify-content-between align-items-center">
+            <h1>Sentences</h1>
+            <h5 class="text-secondary">
+                {{ $sentences->total() }} sentences find
+            </h5>
+        </div>
+
+        <hr>
 
         @foreach ($sentences as $sentence)
 
@@ -19,6 +26,10 @@
             </blockquote>
             
         @endforeach
+
+        <div class="justify-content-end">
+            {{ $sentences->links() }}
+        </div>
 
     </div>
 

@@ -27,7 +27,7 @@ class SentenceController extends Controller
     {
         $this->authorize('id-admin');
 
-        $sentences = Sentence::all();
+        $sentences = Sentence::paginate(10);
 
         return view('sentences.index', compact('sentences'));
     }

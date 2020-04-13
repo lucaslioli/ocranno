@@ -4,7 +4,12 @@
 
     <div class="container">
 
-        <h1>My annotations</h1>
+        <div class="justify-content-between align-items-center">
+            <h1>My annotations</h1>
+            <h5 class="text-secondary">
+                {{ $sentences->total() }} sentences annotated
+            </h5>
+        </div>
 
         @forelse ($sentences as $sentence)
 
@@ -25,6 +30,10 @@
             </div>
             
         @endforelse
+
+        <div class="justify-content-end">
+            {{ $sentences->links() }}
+        </div>
 
     </div>
 

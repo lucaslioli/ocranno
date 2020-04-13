@@ -277,3 +277,8 @@ a {
 .text-primary {
   color: #007bff !important;
 }
+
+.justify-content-between,
+.justify-content-end {
+  display: flex;
+}

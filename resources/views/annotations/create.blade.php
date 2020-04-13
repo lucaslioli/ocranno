@@ -29,8 +29,12 @@
 
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Correction</label>
-                        <textarea class="form-control" name="correction" id="correction" rows="3">{{ $sentence->correction ? : $sentence->sentence }}</textarea>
+                        <textarea class="form-control" name="correction" id="correction" rows="3" required>{{ $sentence->correction ? : $sentence->sentence }}</textarea>
                     </div>
+
+                    @error('correction')
+                        <p class="text-danger">{{ $errors->first('correction') }}</p>
+                    @enderror
 
                     @can ('update', $sentence)
                         <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Register</button>

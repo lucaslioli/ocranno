@@ -19,29 +19,15 @@ class PageController extends Controller
     }
 
     /**
-     * Return a array with validated attributes
-     * 
-     * @param  \Illuminate\Http\Request  $request
-     * @return  Array
-     */
-    protected function validatePage(Request $request)
-    {
-        return request()->validate([
-            'file_name' => 'required',
-            'words_number' => 'required',
-            'wrong_words' => 'required',
-            'year' => ''
-        ]);
-    }
-
-    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $pages = Page::latest()->get();
+        $this->authorize('id-admin');
+        
+        $pages = Page::paginate(15);
 
         return view('pages.index', compact('pages'));
     }

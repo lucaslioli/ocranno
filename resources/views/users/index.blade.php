@@ -4,7 +4,14 @@
 
     <div class="container">
 
-        <h1>Users</h1>
+        <div class="justify-content-between align-items-center">
+            <h1>Users</h1>
+            <h5 class="text-secondary">
+                {{ $users->total() }} registered users
+            </h5>
+        </div>
+
+        <hr>
 
         @foreach ($users as $user)
 
@@ -14,6 +21,10 @@
             </h3>
             
         @endforeach
+
+        <div class="justify-content-end">
+            {{ $users->links() }}
+        </div>
 
     </div>
 

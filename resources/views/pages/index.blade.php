@@ -4,7 +4,14 @@
 
     <div class="container">
 
-        <h1>Pages</h1>
+        <div class="justify-content-between align-items-center">
+            <h1>Pages</h1>
+            <h5 class="text-secondary">
+                {{ $pages->total() }} pages find
+            </h5>
+        </div>
+
+        <hr>
 
         @foreach ($pages as $page)
 
@@ -18,6 +25,10 @@
             </h3>
             
         @endforeach
+
+        <div class="justify-content-end">
+            {{ $pages->links() }}
+        </div>
 
     </div>
 

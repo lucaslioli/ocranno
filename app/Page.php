@@ -29,4 +29,9 @@ class Page extends Model
         $this->annotations++;
         $this->save();
     }
+
+    public function set_user(User $user){
+        $this->user_id = $user->id;
+        $this->save();
+    }
 }

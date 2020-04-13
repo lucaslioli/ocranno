@@ -41,13 +41,30 @@ class AnnotationController extends Controller
      */
     public function create()
     {
-        // sort the sentence by user
-        $sentences = Sentence::where('correction', null)->get();
+        // Search if there is a page in annotation process
+        $page = Page::where('user_id', Auth::user()->id)
+            ->whereColumn('annotations', '<', 'wrong_words')->first();
 
-        if($sentences->isEmpty())
-            return view('empty');
+        // If there isn't, get a new random one
+        if($page == null){
+            $pages = Page::where('user_id', null)->get();
 
-        $sentence = $sentences->random();
+            if($pages->isEmpty())
+                return view('empty', [
+                    'msg' => 'No pages available to be annotated'
+                ]);
+
+            $page = $pages->random();
+
+            // Save the current user to be the annotator
+            $page->set_user(Auth::user());
+        }
+
+        // Get the first sentence that can be annotated
+        $sentence = Sentence::where([
+                ['correction', null],
+                ['page_id', $page->id]
+            ])->first();
 
         return view('annotations.create', [
             'sentence' => $sentence,
@@ -80,6 +97,8 @@ class AnnotationController extends Controller
     public function update(Request $request, Sentence $sentence)
     {
         $this->authorize('update', $sentence);
+
+        $request->validate(['correction' => 'required']);
 
         $sentence->annotate(request('correction'));
 

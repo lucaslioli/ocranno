@@ -64,12 +64,16 @@
                             </li>
 
                             @can('id-admin')
+                                <li class="nav-item {{ Request::is('sentences') ? 'active' : '' }}">
+                                    <a class="nav-link" href="{{ route('sentences.index') }}">Sentences</a>
+                                </li>
+
                                 <li class="nav-item {{ Request::is('pages') ? 'active' : '' }}">
                                     <a class="nav-link" href="{{ route('pages.index') }}">Pages</a>
                                 </li>
 
-                                <li class="nav-item {{ Request::is('sentences') ? 'active' : '' }}">
-                                    <a class="nav-link" href="{{ route('sentences.index') }}">Sentences</a>
+                                <li class="nav-item {{ Request::is('project') ? 'active' : '' }}">
+                                    <a class="nav-link" href="{{ route('project.index') }}">Project</a>
                                 </li>
 
                                 <li class="nav-item {{ Request::is('users') ? 'active' : '' }}">

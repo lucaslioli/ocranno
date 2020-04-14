@@ -4,7 +4,7 @@
 
     <div class="container">
 
-        <div class="justify-content-between align-items-center">
+        <div class="d-flex justify-content-between align-items-center">
             <h1>Pages</h1>
             <h5 class="text-secondary">
                 {{ $pages->total() }} pages find
@@ -13,20 +13,24 @@
 
         <hr>
 
-        @foreach ($pages as $page)
+        <ul class="list-group list-group-flush">
 
-            <h3>
-                {{ $page->id . " - " . $page->file_name }}
-                <small class="text-muted">
-                    <i>Words:</i> {{ $page->words_number }} /
-                    <i>Wrong words:</i> {{ $page->wrong_words }} /
-                    <i>Annotations:</i> {{ $page->annotations }}
-                </small>
-            </h3>
-            
-        @endforeach
+            @foreach ($pages as $page)
 
-        <div class="justify-content-end">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ $page->id . " - " . $page->file_name }}
+                    <small class="text-muted">
+                        <i>Words:</i> <b>{{ $page->words_number }} |</b>
+                        <i>Wrong words:</i> <b>{{ $page->wrong_words }}</b>
+                    </small>
+                    <span class="badge badge-primary badge-pill">{{ $page->annotations }}</span>
+                </li>
+                
+            @endforeach
+        
+        </ul>
+
+        <div class="d-flex justify-content-end">
             {{ $pages->links() }}
         </div>
 

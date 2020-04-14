@@ -4,7 +4,7 @@
 
     <div class="container">
 
-        <div class="justify-content-between align-items-center">
+        <div class="d-flex justify-content-between align-items-center">
             <h1>My annotations</h1>
             <h5 class="text-secondary">
                 {{ $sentences->total() }} sentences annotated
@@ -31,7 +31,7 @@
             
         @endforelse
 
-        <div class="justify-content-end">
+        <div class="d-flex justify-content-end">
             {{ $sentences->links() }}
         </div>
 

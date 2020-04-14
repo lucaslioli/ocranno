@@ -10,16 +10,30 @@
             <div class="annotation row">
 
                 <div class="pdf-page col-8">
-                    <small id="findHelpBlock" class="form-text text-muted">
-                        <span class="badge badge-lg badge-light">Ctrl+F</span> can help you to find the sentence in the file
-                    </small>
-                    <embed src="/pdf/doc1.pdf" width="100%" height="600" frameborder="0" allowfullscreen>
+                    @if(file_exists(public_path() . "/pdf/" . $page->file_name))
+
+                        <small id="findHelpBlock" class="form-text text-muted">
+                            <span class="badge badge-lg badge-light">Ctrl+F</span> can help you to find the sentence in the file
+                        </small>
+
+                        <embed src="/pdf/{{ $page->file_name }}" width="100%" height="600" frameborder="0" allowfullscreen>
+                    @else
+
+                        <div class="card border-secondary mb-3" style="width: 100%; height: 600px;">
+                            <div class="card-body text-secondary">
+                                <h5 class="card-title">Sorry</h5>
+                                <p class="card-text">the original PDF file for the current sentence wasn't found.</p>
+                                <p>The path should be: "/pdf/{{ $page->file_name }}"</p>
+                            </div>
+                        </div>
+
+                    @endif
                 </div>
         
                 <div class="sentences col-4">
 
                     <div class="form-group">
-                        <p>Page annotations: {{ $page->annotations.'/'.$page->wrong_words }}</p>
+                        <p>Page Id: {{ $page->id }} | Annotations: {{ $page->annotations.'/'.$page->wrong_words }}</p>
                     </div>
 
                     <div class="form-group">

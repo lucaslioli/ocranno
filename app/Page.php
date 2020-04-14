@@ -34,4 +34,12 @@ class Page extends Model
         $this->user_id = $user->id;
         $this->save();
     }
+
+    public function set_attributes($file_name, $words_number, $wrong_words){
+        $this->file_name = $file_name;
+        $this->words_number = $words_number;
+        $this->wrong_words = $wrong_words;
+
+        $this->save();
+    }
 }

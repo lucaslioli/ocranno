@@ -19,4 +19,11 @@ class Sentence extends Model
     {
         return $this->belongsTo(Page::class);
     }
+
+    public function set_attributes($sentence, $page_id){
+        $this->sentence = $sentence;
+        $this->page_id = $page_id;
+
+        $this->save();
+    }
 }

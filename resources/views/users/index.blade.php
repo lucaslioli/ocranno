@@ -4,7 +4,7 @@
 
     <div class="container">
 
-        <div class="justify-content-between align-items-center">
+        <div class="d-flex justify-content-between align-items-center">
             <h1>Users</h1>
             <h5 class="text-secondary">
                 {{ $users->total() }} registered users
@@ -22,7 +22,7 @@
             
         @endforeach
 
-        <div class="justify-content-end">
+        <div class="d-flex justify-content-end">
             {{ $users->links() }}
         </div>
 

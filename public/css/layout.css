@@ -278,7 +278,10 @@ a {
   color: #007bff !important;
 }
 
-.justify-content-between,
-.justify-content-end {
-  display: flex;
+.card, .list-group-item {
+  background-color: inherit;
+}
+
+.pagination {
+  margin-top: 20px;
 }

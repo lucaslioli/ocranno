@@ -4,7 +4,7 @@
 
     <div class="container">
 
-        <div class="justify-content-between align-items-center">
+        <div class="d-flex justify-content-between align-items-center">
             <h1>Sentences</h1>
             <h5 class="text-secondary">
                 {{ $sentences->total() }} sentences find
@@ -13,21 +13,26 @@
 
         <hr>
 
-        @foreach ($sentences as $sentence)
+        <ul class="list-group list-group-flush">
 
-            <blockquote class="blockquote">
-                <p class="mb-0">{{ $sentence->id }} -
-                    <a href="{{ route('annotations.edit', $sentence) }}">{{ $sentence->sentence }}</a>
-                </p>
-                <footer class="blockquote-footer">
-                    <strong>Page Id: </strong> <i>{{ $sentence->page_id }} </i> /
-                    <strong>Correction:</strong> <i>{{ $sentence->correction }}</i>
-                </footer>
-            </blockquote>
-            
-        @endforeach
+            @foreach ($sentences as $sentence)
 
-        <div class="justify-content-end">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div class="mb-0">{{ $sentence->id }} -
+                        <a href="{{ route('annotations.edit', $sentence) }}">{{ $sentence->sentence }}</a>
+                    
+                    <footer class="blockquote-footer">
+                        <strong>Correction:</strong> <i>{{ $sentence->correction }}</i>
+                    </footer>
+                    </div>
+                    <p>Page: <i>{{ $sentence->page_id }} </i></p>
+                </li>
+                
+            @endforeach
+
+        </ul>
+
+        <div class="d-flex justify-content-end">
             {{ $sentences->links() }}
         </div>
 

@@ -24,9 +24,21 @@ class Page extends Model
         return $this->hasMany(Sentence::class);
     }
 
+    public function decrement_wrong_words()
+    {
+        $this->wrong_words--;
+        $this->save();
+    }
+
     public function increment_annotations()
     {
         $this->annotations++;
+        $this->save();
+    }
+
+    public function dencrement_annotations()
+    {
+        $this->annotations--;
         $this->save();
     }
 

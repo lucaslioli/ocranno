@@ -23,7 +23,7 @@
                             <div class="card-body text-secondary">
                                 <h5 class="card-title">Sorry</h5>
                                 <p class="card-text">the original PDF file for the current sentence wasn't found.</p>
-                                <p>The path should be: "/pdf/{{ $page->file_name }}"</p>
+                                <p>The file name should be: "{{ $page->file_name }}"</p>
                             </div>
                         </div>
 

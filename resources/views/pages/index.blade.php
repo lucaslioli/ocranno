@@ -1,4 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.app')7
+
+@section('include')
+    <script src="{{ asset('js/jquery-3.5.0.min.js') }}" crossorigin="anonymous"></script>
+@endsection
 
 @section('content')
 
@@ -13,27 +17,94 @@
 
         <hr>
 
-        <ul class="list-group list-group-flush">
+        <div id="response" role="alert"></div>
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">File name</th>
+                    <th scope="col">Words</th>
+                    <th scope="col">Errors</th>
+                    <th scope="col" class="text-center">Annotations</th>
+                    <th scope="col" class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
 
             @foreach ($pages as $page)
 
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    {{ $page->id . " - " . $page->file_name }}
-                    <small class="text-muted">
-                        <i>Words:</i> <b>{{ $page->words_number }} |</b>
-                        <i>Wrong words:</i> <b>{{ $page->wrong_words }}</b>
-                    </small>
-                    <span class="badge badge-primary badge-pill">{{ $page->annotations }}</span>
-                </li>
+                <tr>
+                    <th scope="row">{{ $page->id }}</th>
+                    <td>{{ $page->file_name }}</td>
+                    <td class="text-muted">{{ $page->words_number }}</td>
+                    <td class="text-muted">{{ $page->wrong_words }}</td>
+                    <td class="text-center">
+                        @if ($page->annotations == $page->wrong_words)
+                            <span class="badge badge-success badge-pill">Complete</span>
+                        @else
+                            <span class="badge badge-{{ $page->annotations ? 'primary' : 'secondary' }} badge-pill">{{ $page->annotations }}</span>
+                        @endif
+                    </td>
+                    <td class="text-center">
+                        <a href="{{ route('pages.show', $page->id) }}" class="btn btn-sm btn-outline-secondary" title="List sentences">
+                            <i class="fas fa-list"></i>
+                        </a>
+                        <a href="{{ route('pages.destroy', $page) }}" class="btn btn-sm btn-outline-danger" 
+                            id="deletePage" data-id="{{ $page->id }}" title="Delete page">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
                 
             @endforeach
+
+            </tbody>
+        </table>
         
-        </ul>
 
         <div class="d-flex justify-content-end">
             {{ $pages->links() }}
         </div>
 
     </div>
+
+@endsection
+
+@section('scripts')
+    
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("body").on("click", "#deletePage", function(e){
+
+                if(!confirm("Do you really want to do this?")) {
+                    return false;
+                }
+
+                e.preventDefault();
+                var id = $(this).data("id");
+                var token = $("meta[name='csrf-token']").attr("content");
+
+                $.ajax({
+                    url: this.href, //or use url: "page/"+id,
+                    type: 'DELETE',
+                    data: {
+                        _token: token,
+                        id: id
+                    },
+                    success: function (response){
+                        $("#response").removeClass("alert alert-danger");
+                        $("#response").addClass("alert alert-success");
+                        $("#response").html(response);
+                        $("#tr-"+id).remove();
+                    }
+                });
+                return false;
+            });
+            
+
+        });
+    </script>
 
 @endsection

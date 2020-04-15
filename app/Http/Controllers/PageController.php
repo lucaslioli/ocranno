@@ -33,6 +33,19 @@ class PageController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  \App\Page  $page
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Page $page)
+    {
+        return view('sentences.index', [
+            'sentences' => $page->sentences()->paginate(10)
+        ]);
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Page  $page
@@ -40,7 +53,11 @@ class PageController extends Controller
      */
     public function destroy(Page $page)
     {
-        //
+        $id = $page->id;
+
+        $page->delete();
+
+        return response("Page ".$id." deleted successfully!", 200);
     }
 
 }

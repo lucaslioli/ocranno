@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('include')
+    <script src="{{ asset('js/jquery-3.5.0.min.js') }}" crossorigin="anonymous"></script>
+@endsection
+
 @section('content')
 
     <div class="container">
@@ -13,29 +17,89 @@
 
         <hr>
 
-        <ul class="list-group list-group-flush">
+        <div id="response" role="alert"></div>
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Sentence</th>
+                    <th scope="col" class="text-center">Page ID</th>
+                    <th scope="col" class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
 
             @foreach ($sentences as $sentence)
 
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <div class="mb-0">{{ $sentence->id }} -
-                        <a href="{{ route('annotations.edit', $sentence) }}">{{ $sentence->sentence }}</a>
+                <tr id="tr-{{ $sentence->id }}">
+                    <td>{{ $sentence->id }}</td>
+                    <td>
+                        {{ $sentence->sentence }}
                     
-                    <footer class="blockquote-footer">
-                        <strong>Correction:</strong> <i>{{ $sentence->correction }}</i>
-                    </footer>
-                    </div>
-                    <p>Page: <i>{{ $sentence->page_id }} </i></p>
-                </li>
+                        <footer class="blockquote-footer">
+                            <strong>Correction:</strong> <i>{{ $sentence->correction }}</i>
+                        </footer>
+                    </td>
+                    <td class="text-muted text-center">{{ $sentence->page_id }}</td>
+                    <td class="text-center">
+                        <a href="{{ route('annotations.edit', $sentence) }}" class="btn btn-sm btn-outline-secondary" title="Edit annotation">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a href="{{ route('sentences.destroy', $sentence) }}" class="btn btn-sm btn-outline-danger" 
+                            id="deleteSentence" data-id="{{ $sentence->id }}" title="Delete sentence">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
                 
             @endforeach
 
-        </ul>
+            </tbody>
+        </table>
 
         <div class="d-flex justify-content-end">
             {{ $sentences->links() }}
         </div>
 
     </div>
+
+@endsection
+
+@section('scripts')
+    
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("body").on("click", "#deleteSentence", function(e){
+
+                if(!confirm("Do you really want to do this?")) {
+                    return false;
+                }
+
+                e.preventDefault();
+                var id = $(this).data("id");
+                var token = $("meta[name='csrf-token']").attr("content");
+
+                $.ajax({
+                    url: this.href, //or use url: "sentence/"+id,
+                    type: 'DELETE',
+                    data: {
+                        _token: token,
+                        id: id
+                    },
+                    success: function (response){
+                        $("#response").removeClass("alert alert-danger");
+                        $("#response").addClass("alert alert-success");
+                        $("#response").html(response);
+                        $("#tr-"+id).remove();
+                    }
+                });
+                return false;
+            });
+            
+
+        });
+    </script>
 
 @endsection

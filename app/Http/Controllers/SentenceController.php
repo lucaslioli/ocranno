@@ -40,6 +40,15 @@ class SentenceController extends Controller
      */
     public function destroy(Sentence $sentence)
     {
-        //
+        $sentence->page->decrement_wrong_words();
+
+        if($sentence->correction != null)
+            $sentence->page->dencrement_annotations();
+
+        $id = $sentence->id;
+
+        $sentence->delete();
+
+        return response("Sentence ".$id." deleted successfully!", 200);
     }
 }

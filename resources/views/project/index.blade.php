@@ -28,13 +28,15 @@
 
             <div class="form-group col-md-6">
 
-                <button type="submit" class="btn btn-primary btn-block">Process files and populate</button>
+                <button type="submit" class="btn btn-primary btn-block" onclick="launch_progressbar()">Process files and populate</button>
 
             </div>
 
         </div>
 
     </form>
+
+    <div id="progress" class="progress"></div>
 
     @if(isset($response))
         <hr>
@@ -46,4 +48,21 @@
     @endif
 
 </div>
+@endsection
+
+@section('scripts')
+
+    <script >
+        /* show file value after file select */
+        document.querySelector('.custom-file-input').addEventListener('change',function(e){
+            var fileName = document.getElementById("json_file").files[0].name;
+            var nextSibling = e.target.nextElementSibling;
+            nextSibling.innerText = fileName;
+        })
+
+        function launch_progressbar() {
+            document.getElementById('progress').innerHTML = '<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>';
+        };
+    </script>
+
 @endsection

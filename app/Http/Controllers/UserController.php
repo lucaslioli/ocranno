@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Page;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -27,7 +28,10 @@ class UserController extends Controller
     {
         $this->authorize('id-admin');
 
-        $users = User::paginate(15);
+        $users = User::addSelect(['annotations' => 
+                Page::selectRaw('sum(annotations) as annotations')
+                ->whereColumn('user_id', 'users.id')
+            ])->paginate(15);
 
         return view('users.index', compact('users'));
     }

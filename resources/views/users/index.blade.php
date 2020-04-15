@@ -13,14 +13,32 @@
 
         <hr>
 
-        @foreach ($users as $user)
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">User name</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col" class="text-center">Annotations</th>
+                </tr>
+            </thead>
+            <tbody>
 
-            <h3>
-                {{ $user->id }} - {{ $user->name }}
-                <small class="text-muted"><i>E-mail:</i> {{ $user->email }}</small>
-            </h3>
-            
-        @endforeach
+            @foreach ($users as $user)
+
+                <tr>
+                    <td>{{ $user->id }}</td>
+                    <td>{{ $user->name }}</td>
+                    <td class="text-muted">{{ $user->email }}</td>
+                    <td class="text-center">
+                        <span class="badge badge-{{ $user->annotations ? 'primary' : 'secondary' }} badge-pill">{{ $user->annotations }}</span>
+                    </td>
+                </tr>
+                
+            @endforeach
+
+            </tbody>
+        </table>
 
         <div class="d-flex justify-content-end">
             {{ $users->links() }}

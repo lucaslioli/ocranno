@@ -1,4 +1,4 @@
-@extends('layouts.app')7
+@extends('layouts.app')
 
 @section('include')
     <script src="{{ asset('js/jquery-3.5.0.min.js') }}" crossorigin="anonymous"></script>
@@ -50,6 +50,17 @@
                         <a href="{{ route('pages.show', $page->id) }}" class="btn btn-sm btn-outline-secondary" title="List sentences">
                             <i class="fas fa-list"></i>
                         </a>
+
+                        @if($page->illegible)
+                            <a href="{{ route('pages.illegible', $page) }}" class="btn btn-sm btn-secondary" title="Set page as legible">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                        @else
+                            <a href="{{ route('pages.illegible', $page) }}" class="btn btn-sm btn-outline-secondary" title="Set page as illegible">
+                                <i class="fas fa-eye-slash"></i>
+                            </a>
+                        @endif
+
                         <a href="{{ route('pages.destroy', $page) }}" class="btn btn-sm btn-outline-danger" 
                             id="deletePage" data-id="{{ $page->id }}" title="Delete page">
                             <i class="fas fa-trash"></i>
@@ -101,8 +112,8 @@
                     }
                 });
                 return false;
+
             });
-            
 
         });
     </script>

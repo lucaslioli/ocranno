@@ -43,11 +43,14 @@ class AnnotationController extends Controller
     {
         // Search if there is a page in annotation process
         $page = Page::where('user_id', Auth::user()->id)
+            ->where('illegible', false)
             ->whereColumn('annotations', '<', 'wrong_words')->first();
 
         // If there isn't, get a new random one
         if($page == null){
-            $pages = Page::where('user_id', null)->get();
+            $pages = Page::where('user_id', null)
+                ->where('illegible', false)
+                ->get();
 
             if($pages->isEmpty())
                 return view('empty', [

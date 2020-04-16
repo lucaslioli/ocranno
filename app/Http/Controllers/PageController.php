@@ -60,4 +60,14 @@ class PageController extends Controller
         return response("Page ".$id." deleted successfully!", 200);
     }
 
+    public function illegible(Page $page)
+    {
+        if($page->illegible){
+            $page->set_user(null);
+        }
+
+        $page->set_illegible(!$page->illegible);
+
+        return back();
+    }
 }

@@ -32,8 +32,10 @@
         
                 <div class="sentences col-4">
 
-                    <div class="form-group">
-                        <p>Page Id: {{ $page->id }} | Annotations: {{ $page->annotations.'/'.$page->wrong_words }}</p>
+                    <div class="form-group d-flex justify-content-between">
+                        <div>Page: {{ $page->id }}</div>
+                        <div>Sentence: {{ $sentence->id }}</div>
+                        <div>Annotations: <strong>{{ $page->annotations.'/'.$page->wrong_words }}</strong></div>
                     </div>
 
                     <div class="form-group">
@@ -46,12 +48,32 @@
                         <textarea class="form-control" name="correction" id="correction" rows="3" required>{{ $sentence->correction ? : $sentence->sentence }}</textarea>
                     </div>
 
+                    <div class="form-group">
+                        <small id="findHelpBlock" class="form-text text-muted">
+                            *In case the sentence is correct, submit it equally
+                        </small>
+                    </div>
+
                     @error('correction')
                         <p class="text-danger">{{ $errors->first('correction') }}</p>
                     @enderror
 
                     @can ('update', $sentence)
-                        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Register</button>
+                        <div class="d-flex justify-content-between">
+
+                            <button type="submit" class="btn btn-primary col-6"><i class="fas fa-check"></i> Submit</button>
+
+                            @if($page->illegible)
+                                <a href="{{ route('pages.illegible', $page) }}" class="btn btn-danger col-5" title="Set page as legible">
+                                    <i class="fas fa-eye"></i> Legible
+                                </a>
+                            @else
+                                <a href="{{ route('pages.illegible', $page) }}" class="btn btn-outline-danger col-5" title="Set page as illegible">
+                                    <i class="fas fa-eye-slash"></i> Illegible
+                                </a>
+                            @endif
+
+                        </div>
                     @endcan
 
                 </div>

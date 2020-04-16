@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Page extends Model
 {
-    protected $fillable = ['file_name', 'words_number', 'wrong_words', 'year', 'annotations'];
+    protected $fillable = ['file_name', 'words_number', 'wrong_words', 'year', 'annotations', 'illegible'];
     // protected $guarded = [];
 
     public function path()
@@ -42,8 +42,13 @@ class Page extends Model
         $this->save();
     }
 
-    public function set_user(User $user){
-        $this->user_id = $user->id;
+    public function set_user(User $user = null)
+    {
+        if($user)
+            $this->user_id = $user->id;
+        else
+            $this->user_id = null;
+
         $this->save();
     }
 
@@ -52,6 +57,12 @@ class Page extends Model
         $this->words_number = $words_number;
         $this->wrong_words = $wrong_words;
 
+        $this->save();
+    }
+
+    public function set_illegible($illegible = true)
+    {
+        $this->illegible = $illegible;
         $this->save();
     }
 }

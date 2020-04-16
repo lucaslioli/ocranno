@@ -31,12 +31,12 @@ Route::post('/project', 'ProjectController@store');
 // Pages routes
 Route::get('/pages', 'PageController@index')->name('pages.index');
 Route::get('/pages/{page}', 'PageController@show')->name('pages.show');
-Route::delete('/page/{page}', 'PageController@destroy')->name('pages.destroy');
+Route::get('/pages/{page}/illegible', 'PageController@illegible')->name('pages.illegible');
+Route::delete('/pages/{page}', 'PageController@destroy')->name('pages.destroy');
 
 // Sentences routes
 Route::get('/sentences', 'SentenceController@index')->name('sentences.index');
 Route::delete('/sentences/{sentence}', 'SentenceController@destroy')->name('sentences.destroy');
-
 
 // Annotation routes
 Route::get('/annotations', 'AnnotationController@index')->name('annotations.index');

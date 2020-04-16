@@ -20,6 +20,7 @@ class CreatePagesTable extends Migration
             $table->integer('wrong_words');
             $table->integer('year')->nullable();
             $table->integer('annotations')->default(0);
+            $table->boolean('illegible')->default(false);
             $table->foreignId('user_id')
                 ->nullable()
                 ->constrained()

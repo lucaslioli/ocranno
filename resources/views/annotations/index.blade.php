@@ -11,25 +11,50 @@
             </h5>
         </div>
 
-        @forelse ($sentences as $sentence)
+        <hr>
 
-            <blockquote class="blockquote">
-                <p class="mb-0">{{ $sentence->id }} -
-                    <a href="{{ route('annotations.edit', $sentence) }}">{{ $sentence->sentence }}</a>
-                </p>
-                <footer class="blockquote-footer">
-                    <strong>Page Id: </strong> <i>{{ $sentence->page_id }} </i> /
-                    <strong>Correction:</strong> <i>{{ $sentence->correction }}</i>
-                </footer>
-            </blockquote>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Sentence</th>
+                    <th scope="col" class="text-center">Page ID</th>
+                    <th scope="col" class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
 
-        @empty
+            @forelse ($sentences as $sentence)
 
-            <div class="alert alert-primary" role="alert">
-                <i class="fas fa-ban"></i> No annotations have been made yet.
-            </div>
-            
-        @endforelse
+                <tr id="tr-{{ $sentence->id }}">
+                    <td>{{ $sentence->id }}</td>
+                    <td>
+                        {{ $sentence->sentence }}
+                    
+                        <footer class="blockquote-footer">
+                            <strong>Correction:</strong> <i>{{ $sentence->correction }}</i>
+                        </footer>
+                    </td>
+                    <td class="text-muted text-center">{{ $sentence->page_id }}</td>
+                    <td class="text-center">
+                        <a href="{{ route('annotations.edit', $sentence) }}" class="btn btn-sm btn-outline-secondary" title="Edit annotation">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                    </td>
+                </tr>
+
+            @empty
+                <tr>
+                    <td colspan="4" class="text-center">
+                        <i class="fas fa-ban"></i> No annotations have been made yet.
+                    </td>
+                </tr>
+                
+            @endforelse
+
+            </tbody>
+
+        </table>
 
         <div class="d-flex justify-content-end">
             {{ $sentences->links() }}

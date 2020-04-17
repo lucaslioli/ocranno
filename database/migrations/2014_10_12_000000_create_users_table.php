@@ -25,10 +25,11 @@ class CreateUsersTable extends Migration
         });
 
         DB::table('users')->insert([
-            'name' => 'admin',
-            'email' => 'admin@admin.com',
+            'name' => env('ADMIN_NAME'),
+            'email' => env('ADMIN_EMAIL'),
             'role' => 'admin',
-            'password' => bcrypt('secret'),
+            'password' => bcrypt(env('ADMIN_PASSWORD')),
+            'created_at' => date('Y-m-d H:i:s')
         ]);
     }
 

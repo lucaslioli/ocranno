@@ -144,4 +144,20 @@ return [
 
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Admin user
+    |--------------------------------------------------------------------------
+    |
+    | Administrator user with all privileges over the system.
+    |
+    */
+
+    'admin_user' => [
+        'name' => env('ADMIN_NAME', 'admin'),
+        'email' => env('ADMIN_EMAIL', 'admin@admin'),
+        'role' => 'admin',
+        'password' => env('ADMIN_PASSWORD', 'secret'),
+    ]
+
 ];

@@ -13,8 +13,10 @@
                         that will be used to train machine learning models that will automatically correct OCR-ed text</p>
                     <p>
                 </div>
-                    <a class="btn btn-outline-primary col-3" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    <a class="btn btn-primary col-3" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    @guest
+                        <a class="btn btn-outline-primary col-3" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <a class="btn btn-primary col-3" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    @endguest
                 </p>
             </div>
         </section>

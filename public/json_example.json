@@ -1,0 +1,20 @@
+[
+    {
+        "file_name": "page_name.pdf",
+        "words_number": 502,
+        "wrong_words": 32,
+        "sentences": [
+            {"sentence": "some sentence with a err0r inserted"},
+            {"sentence": "another sentence w1th an extraction error"}
+        ]
+    },
+    {
+        "file_name": "another_page_name.pdf",
+        "words_number": 354,
+        "wrong_words": 26,
+        "sentences": [
+            {"sentence": "the third santence with a error"},
+            {"sentence": "this sentence hes a wrong word"}
+        ]
+    }
+]

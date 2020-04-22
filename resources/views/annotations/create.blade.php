@@ -10,13 +10,13 @@
             <div class="annotation row">
 
                 <div class="pdf-page col-8">
-                    @if(file_exists(public_path() . "/pdf/" . $page->file_name))
+                    @if(file_exists(public_path()."/pdfs/".$page->file_name))
 
                         <small id="findHelpBlock" class="form-text text-muted">
                             <span class="badge badge-lg badge-light">Ctrl+F</span> can help you to find the sentence in the file
                         </small>
 
-                        <embed src="/pdf/{{ $page->file_name }}" width="100%" height="600" frameborder="0" allowfullscreen>
+                        <embed src="/pdfs/{{ $page->file_name }}" width="100%" height="600" frameborder="0" allowfullscreen>
                     @else
 
                         <div class="card border-secondary mb-3" style="width: 100%; height: 600px;">

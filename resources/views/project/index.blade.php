@@ -10,8 +10,18 @@
 
     <hr>
 
-    <form method="POST" action="/project" enctype="multipart/form-data">
+    {{-- PROCESS UNIQUE JSON FILE --}}
+
+    <form method="POST" action="/project/store" enctype="multipart/form-data">
         @csrf
+
+        <div class="form-row">
+            <div class="col-md-12">
+                <a href="{{ asset('json_example.json') }}" target="blank">
+                    <i class="fas fa-link"></i> JSON example file
+                </a>
+            </div>
+        </div>
 
         <div class="form-row">
 
@@ -27,16 +37,46 @@
             </div>
 
             <div class="form-group col-md-6">
-
-                <button type="submit" class="btn btn-primary btn-block" onclick="launch_progressbar()">Process files and populate</button>
-
+                <button type="submit" class="btn btn-primary btn-block" id="btn-json" onclick="start_loading(this)">Process JSON file</button>
             </div>
 
         </div>
 
     </form>
 
+    <br>
+
+    {{-- SAVE MULTIPLES PDF FILES --}}
+
+    <form method="POST" action="/project/upload" enctype="multipart/form-data">
+        @csrf
+
+        <div class="form-row">
+
+            <div class="form-group col-md-6">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="pdf_files" name="pdf_files[]" accept="pdf/*" multiple required>
+                    <label class="custom-file-label" for="pdf_files">Select PDF files</label>
+                </div>
+
+                @if($errors->has('pdf_files.*'))
+                    <p class="text-danger">{{ $errors->first('pdf_files.*') }}</p>
+                @endif
+            </div>
+
+            <div class="form-group col-md-6">
+                <button type="submit" class="btn btn-secondary btn-block" id="btn-pdfs" onclick="start_loading(this)">Process PDF files</button>
+            </div>
+
+        </div>
+
+    </form>
+
+    <br>
+
     <div id="progress" class="progress"></div>
+
+    {{-- DISPLAY RESPONSE --}}
 
     @if(isset($response))
         <hr>
@@ -53,15 +93,25 @@
 @section('scripts')
 
     <script >
-        /* show file value after file select */
-        document.querySelector('.custom-file-input').addEventListener('change',function(e){
+        /* show file value after file selected */
+        document.getElementById('json_file').addEventListener('change',function(e){
             var fileName = document.getElementById("json_file").files[0].name;
             var nextSibling = e.target.nextElementSibling;
             nextSibling.innerText = fileName;
         })
 
-        function launch_progressbar() {
-            document.getElementById('progress').innerHTML = '<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>';
+        /* show number of files selected */
+        document.getElementById('pdf_files').addEventListener('change',function(e){
+            var files = document.getElementById("pdf_files").files.length;
+            var nextSibling = e.target.nextElementSibling;
+            nextSibling.innerText = files + " files selected";
+        })
+
+        function start_loading(OBJ) {
+            if ((OBJ.id == 'btn-json' && $("#json_file").val() == "") || (OBJ.id == 'btn-pdfs' && $("#pdf_files").val() == ""))
+                return ;
+
+            OBJ.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...';
         };
     </script>
 

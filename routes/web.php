@@ -26,7 +26,8 @@ Route::get('/users', 'UserController@index')->name('users.index');
 
 // Project routes
 Route::get('/project', 'ProjectController@index')->name('project.index');
-Route::post('/project', 'ProjectController@store');
+Route::post('/project/store', 'ProjectController@store');
+Route::post('/project/upload', 'ProjectController@upload');
 
 // Pages routes
 Route::get('/pages', 'PageController@index')->name('pages.index');

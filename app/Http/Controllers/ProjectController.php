@@ -33,9 +33,9 @@ class ProjectController extends Controller
     }
 
     /**	
-     * Store a newly created resource in storage.	
+     * Store a newly created resource in storage.
      *	
-     * @param  \Illuminate\Http\Request  $request	
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response	
      */	
     public function store(Request $request)	
@@ -78,7 +78,34 @@ class ProjectController extends Controller
         $data = array(
             "response" => "Success!",
             "pages" => (Page::count() - $pbefore),
-            "sentences" => (Sentence::count()) - $sbefore);
+            "sentences" => (Sentence::count() - $sbefore)
+        );
+
+        return response()
+            ->view('project.index', $data, 200);
+    }
+
+    /**	
+     * Upload PDF files to the project
+     *	
+     * @param  \Illuminate\Http\Request  $request	
+     * @return \Illuminate\Http\Response	
+     */	
+    public function upload(Request $request)	
+    {
+        $request->validate([
+            'pdf_files' => 'required',
+            'pdf_files.*' => 'mimes:pdf'
+        ]);
+
+        $files = $request->file('pdf_files');
+
+        foreach($files as $file)
+            $file->move(public_path("pdfs/"), $file->getClientOriginalName());
+
+        $data = array(
+            "response" => "Files uploaded successfully!"
+        );
 
         return response()
             ->view('project.index', $data, 200);

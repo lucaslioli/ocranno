@@ -112,6 +112,9 @@
 
             OBJ.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...';
 
+            $("#btn-json").prop('disabled', true);
+            $("#btn-pdfs").prop('disabled', true);
+
             $("#response-text").html('<div class="text-danger" role="alert">Do not left the page! Wait until the process finish...</div>');
         };
     </script>

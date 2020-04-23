@@ -106,14 +106,21 @@
             nextSibling.innerText = files + " files selected";
         })
 
+        $(function(){
+            $('form').on('submit', function(event){
+                event.preventDefault();
+                event.stopPropagation();
+        
+                $("#btn-json").prop('disabled', true);
+                $("#btn-pdfs").prop('disabled', true);
+            });
+        });
+
         function start_loading(OBJ) {
             if ((OBJ.id == 'btn-json' && $("#json_file").val() == "") || (OBJ.id == 'btn-pdfs' && $("#pdf_files").val() == ""))
                 return ;
 
             OBJ.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...';
-
-            $("#btn-json").prop('disabled', true);
-            $("#btn-pdfs").prop('disabled', true);
 
             $("#response-text").html('<div class="text-danger" role="alert">Do not left the page! Wait until the process finish...</div>');
         };

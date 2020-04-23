@@ -40,20 +40,22 @@ class ProjectController extends Controller
      */	
     public function store(Request $request)	
     {
-        $request->validate(['json_file' => 'required|mimes:json']);
+        $request->validate(['json_file' => 'required|mimes:json,txt']);
 
         $pbefore = Page::count();
         $sbefore = Sentence::count();
 
         // Log::info("Starting process the data...");
 
-        if(!$request->file('json_file')->isValid()) {
+        $file = $request->file('json_file');
+
+        if(!$file->isValid() || $file->getClientOriginalExtension() != 'json') {
             return response()
                 ->view('project.index', ['response' => "ERROR: The file is not valid!"], 400);
         }
 
         // Read File
-        $jsonString = file_get_contents($request->file('json_file'));
+        $jsonString = file_get_contents($file);
         $data = json_decode($jsonString, true);
 
         foreach ($data as $page) {

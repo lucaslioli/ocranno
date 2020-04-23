@@ -15,8 +15,8 @@ class CreateSentencesTable extends Migration
     {
         Schema::create('sentences', function (Blueprint $table) {
             $table->id();
-            $table->string('sentence');
-            $table->string('correction')->nullable();
+            $table->text('sentence');
+            $table->text('correction')->nullable();
             $table->foreignId('page_id')
                 ->constrained()
                 ->onDelete('cascade');;

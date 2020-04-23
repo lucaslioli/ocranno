@@ -25,10 +25,10 @@
 
         <div class="form-row">
 
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-8">
                 <div class="custom-file">
                     <input type="file" class="custom-file-input" id="json_file" name="json_file" value="{{ old('json_file') }}" required>
-                    <label class="custom-file-label" for="json_file">Select a JSON file</label>
+                    <label class="custom-file-label" for="json_file">Select a JSON file (recomended size of 2M)</label>
                 </div>
 
                 @error('json_file')
@@ -36,7 +36,7 @@
                 @enderror
             </div>
 
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-4">
                 <button type="submit" class="btn btn-primary btn-block" id="btn-json" onclick="start_loading(this)">Process JSON file</button>
             </div>
 
@@ -53,10 +53,10 @@
 
         <div class="form-row">
 
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-8">
                 <div class="custom-file">
                     <input type="file" class="custom-file-input" id="pdf_files" name="pdf_files[]" accept="pdf/*" multiple required>
-                    <label class="custom-file-label" for="pdf_files">Select PDF files</label>
+                    <label class="custom-file-label" for="pdf_files">Select PDF files (max of 20 files)</label>
                 </div>
 
                 @if($errors->has('pdf_files.*'))
@@ -64,7 +64,7 @@
                 @endif
             </div>
 
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-4">
                 <button type="submit" class="btn btn-secondary btn-block" id="btn-pdfs" onclick="start_loading(this)">Process PDF files</button>
             </div>
 
@@ -72,20 +72,19 @@
 
     </form>
 
-    <br>
-
-    <div id="progress" class="progress"></div>
+    <hr>
 
     {{-- DISPLAY RESPONSE --}}
 
-    @if(isset($response))
-        <hr>
-        <div class="{{ Str::contains($response, 'ERROR') ? 'text-danger' : 'text-success' }}" role="alert"> {{ $response }} </div>
+    <div id="response-text">
+        @if(isset($response))
+            <div class="{{ Str::contains($response, 'ERROR') ? 'text-danger' : 'text-success' }}" role="alert"> {{ $response }} </div>
 
-        @if(isset($pages) && isset($sentences))
-            Total of {{ $pages }} pages inserted, with {{ $sentences }} sentences
+            @if(isset($pages) && isset($sentences))
+                Total of {{ $pages }} pages inserted, with {{ $sentences }} sentences
+            @endif
         @endif
-    @endif
+    </div>
 
 </div>
 @endsection
@@ -112,6 +111,8 @@
                 return ;
 
             OBJ.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...';
+
+            $("#response-text").html('<div class="text-danger" role="alert">Do not left the page! Wait until the process finish...</div>');
         };
     </script>
 

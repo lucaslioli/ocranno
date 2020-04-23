@@ -37,6 +37,23 @@ body {
   padding-bottom: 10px;
 }
 
+.footer .logo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  background-color: #e9ecef;
+  width: 80px;
+  height: 80px;
+  margin: 5px;
+}
+
+.footer .logo img {
+  max-height: 90%;
+  max-width: 90%;
+}
+
 a {
   color: #007bff;
   text-decoration: none;
@@ -284,4 +301,9 @@ a {
 
 .pagination {
   margin-top: 20px;
+}
+
+.box-pdf-file {
+  width: 100%;
+  height: calc(100vh - 360px);
 }

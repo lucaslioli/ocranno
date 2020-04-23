@@ -8,7 +8,7 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'ocranno - OCR Text Annotation Tool') }}</title>
+        <title>OCRAnno - Annotation</title>
 
         <link rel="shortcut icon" href="{{ asset('icon.png') }}" />
 
@@ -120,16 +120,15 @@
         
                 <div class="row">
             
-                    <div class="col-md-6 mt-md-0 mt-3">
+                    <div class="col-md-4">
             
                         <h5 class="text-uppercase">About</h5>
-                        <p>Ocranno it's a text annotation tool for data extracted with OCR techniques from PDF files. Developed as part of a collaboration project between Institute of Informatics from UFRGS and Petrobras.</p>
+                        <p>OCRAnno is a text annotation tool designed to provide annotated data to improve the results of OCR systems. 
+                        OCRAnno is being developed as part of a collaboration between the Institute of Informatics at UFRGS and Petrobras.</p>
             
                     </div>
             
-                    <hr class="clearfix w-100 d-md-none pb-3">
-            
-                    <div class="col-md-3 mb-md-0 mb-3">
+                    <div class="col-md-2">
             
                         <h5 class="text-uppercase">Links</h5>
                 
@@ -149,8 +148,24 @@
                         </ul>
             
                     </div>
+
+                    <div class="col-md-3">
+                        
+                        <div class="d-flex">
+                            <div class="logo">
+                                <img src="{{ asset('images/logo-ppgc.png') }}" alt="Logo PPGC">
+                            </div>
+                            <div class="logo">
+                                <img src="{{ asset('images/logo-ufrgs.png') }}" alt="Logo UFRGS">
+                            </div>
+                            <div class="logo">
+                                <img src="{{ asset('images/logo-petrobras.png') }}" alt="Logo Petrobras">
+                            </div>
+                        </div>
+                        
+                    </div>
             
-                    <div class="col-md-3 mb-md-0 mb-3">
+                    <div class="col-md-3">
             
                         <h5 class="text-uppercase">Address</h5>
                         <p>Institute of Informatics, UFRGS</b><br>Av. Bento Gonçalves, 9500<br>Porto Alegre, RS, Brasil<br>91501-970</p>

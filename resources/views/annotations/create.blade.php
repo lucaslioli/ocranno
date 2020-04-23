@@ -16,13 +16,13 @@
                             <span class="badge badge-lg badge-light">Ctrl+F</span> can help you to find the sentence in the file
                         </small>
 
-                        <embed src="/pdfs/{{ $page->file_name }}" width="100%" height="600" frameborder="0" allowfullscreen>
+                        <embed src="/pdfs/{{ $page->file_name }}" class="box-pdf-file" frameborder="0" allowfullscreen>
                     @else
 
-                        <div class="card border-secondary mb-3" style="width: 100%; height: 600px;">
+                        <div class="card border-secondary mb-3 box-pdf-file">
                             <div class="card-body text-secondary">
                                 <h5 class="card-title">Sorry</h5>
-                                <p class="card-text">the original PDF file for the current sentence wasn't found.</p>
+                                <p class="card-text">the original PDF file for the current sentence was not found.</p>
                                 <p>The file name should be: "{{ $page->file_name }}"</p>
                             </div>
                         </div>
@@ -40,12 +40,12 @@
 
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Sentence</label>
-                        <textarea class="form-control" name="sentence" id="sentence" rows="3" readonly>{{ $sentence->sentence }}</textarea>
+                        <textarea class="form-control" name="sentence" id="sentence" rows="4" readonly>{{ $sentence->sentence }}</textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Correction</label>
-                        <textarea class="form-control" name="correction" id="correction" rows="3" required>{{ $sentence->correction ? : $sentence->sentence }}</textarea>
+                        <textarea class="form-control" name="correction" id="correction" rows="4" required>{{ $sentence->correction ? : $sentence->sentence }}</textarea>
                     </div>
 
                     <div class="form-group">

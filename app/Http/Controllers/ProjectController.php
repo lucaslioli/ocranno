@@ -60,6 +60,11 @@ class ProjectController extends Controller
 
         foreach ($data as $page) {
 
+            $test_page = Page::where('file_name', $page['file_name'])->first();
+
+            if($test_page)
+                continue;
+            
             $new_page = new Page();
 
             $new_page->set_attributes(

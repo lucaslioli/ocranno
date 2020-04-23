@@ -122,7 +122,7 @@
 
             OBJ.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...';
 
-            $("#response-text").html('<div class="text-danger" role="alert">Do not left the page! Wait until the process finish...</div>');
+            $("#response-text").html('<div class="text-danger" role="alert">Processing data...</div>');
         };
     </script>
 

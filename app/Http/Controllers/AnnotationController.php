@@ -119,7 +119,7 @@ class AnnotationController extends Controller
 
         $request->validate(['correction' => 'required']);
 
-        $sentence->annotate(request('correction'));
+        $sentence->annotate(request('correction'), request('observation'));
 
         return redirect(route('annotations.create'));
     }

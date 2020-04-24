@@ -49,6 +49,11 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Observations</label>
+                        <textarea class="form-control" name="observation" id="observation" rows="2" placeholder="Optional..." required>{{ $sentence->observation }}</textarea>
+                    </div>
+
+                    <div class="form-group">
                         <small id="findHelpBlock" class="form-text text-muted">
                             *In case the sentence is correct, submit it equally
                         </small>

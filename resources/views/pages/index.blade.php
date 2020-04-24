@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('include')
-    <script src="{{ asset('js/jquery-3.5.0.min.js') }}" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/jquery-3.5.0.min.js') }}"></script>
 @endsection
 
 @section('content')

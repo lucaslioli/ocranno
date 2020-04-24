@@ -5,13 +5,17 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Sentence extends Model
-{   
-    public function annotate($correction)
+{
+    protected $fillable = ['correction', 'observation'];
+
+    public function annotate($correction, $observation = NULL)
     {
         if($this->correction == null)
             $this->page->increment_annotations();
 
         $this->correction = $correction;
+        $this->observation = $observation;
+
         $this->save();
     }
 

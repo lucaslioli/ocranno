@@ -23,6 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Users routes
 Route::get('/users', 'UserController@index')->name('users.index');
+Route::get('/users/search', 'UserController@search')->name('users.search');
 
 // Project routes
 Route::get('/project', 'ProjectController@index')->name('project.index');

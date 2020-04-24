@@ -36,4 +36,18 @@ class UserController extends Controller
         return view('users.index', compact('users'));
     }
 
+    public function search(Request $request)
+    {
+        $this->authorize('id-admin');
+
+        $query = $request->get('query');
+        
+        $users = User::where('id', $query)
+            ->orWhere('name', 'LIKE', "%$query%")
+            ->orWhere('email', 'LIKE', "%$query%")
+            ->paginate(15);
+
+            return view('users.index', compact('users'));
+    }
+
 }

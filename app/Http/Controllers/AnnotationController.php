@@ -28,11 +28,27 @@ class AnnotationController extends Controller
     {
         $sentences = Sentence::whereNotNull('correction')
             ->whereIn('page_id', Auth::user()->pages->map->id)
-            ->paginate(10);
+            ->paginate(15);
         
         return view('annotations.index', compact('sentences'));
     }
 
+    public function search(Request $request)
+    {
+        $query = $request->get('query');
+        
+        $search = Sentence::where('id', $query)
+            ->orWhere('page_id', 'LIKE', "%$query%")
+            ->orWhere('sentence', 'LIKE', "%$query%")
+            ->get();
+
+        $sentences = Sentence::whereNotNull('correction')
+            ->whereIn('page_id', Auth::user()->pages->map->id)
+            ->whereIn('id', $search->map->id)
+            ->paginate(15);
+        
+        return view('annotations.index', compact('sentences'));
+    }
 
     /**
      * Select randomly a page and display a sentence to be annotated

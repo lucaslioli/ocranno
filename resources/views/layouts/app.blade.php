@@ -150,6 +150,8 @@
                     </div>
 
                     <div class="col-md-3">
+
+                        <h5>&nbsp;</h5>
                         
                         <div class="d-flex">
                             <div class="logo">

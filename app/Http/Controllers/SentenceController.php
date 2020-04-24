@@ -27,7 +27,21 @@ class SentenceController extends Controller
     {
         $this->authorize('id-admin');
 
-        $sentences = Sentence::paginate(10);
+        $sentences = Sentence::paginate(15);
+
+        return view('sentences.index', compact('sentences'));
+    }
+
+    public function search(Request $request)
+    {
+        $this->authorize('id-admin');
+
+        $query = $request->get('query');
+        
+        $sentences = Sentence::where('id', $query)
+            ->orWhere('page_id', 'LIKE', "%$query%")
+            ->orWhere('sentence', 'LIKE', "%$query%")
+            ->paginate(15);
 
         return view('sentences.index', compact('sentences'));
     }

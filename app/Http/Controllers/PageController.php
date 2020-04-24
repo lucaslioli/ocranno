@@ -32,6 +32,19 @@ class PageController extends Controller
         return view('pages.index', compact('pages'));
     }
 
+    public function search(Request $request)
+    {
+        $this->authorize('id-admin');
+
+        $query = $request->get('query');
+        
+        $pages = Page::where('id', $query)
+            ->orWhere('file_name', 'LIKE', "%$query%")
+            ->paginate(15);
+
+        return view('pages.index', compact('pages'));
+    }
+
     /**
      * Display the specified resource.
      *

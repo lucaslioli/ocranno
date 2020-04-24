@@ -17,6 +17,22 @@
 
         <hr>
 
+        <form method="GET" action="{{ route('sentences.search') }}">
+            <div class="row">
+
+                <div class="col-md-10">
+                    <input type="text" name="query" id="query" class="form-control" placeholder="Enter an ID, part of sentence or page ID..." value="{{ old('query') }}">
+                </div>
+
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-outline-primary btn-block" id="btn-search"><i class="fas fa-search"></i> Search</button>
+                </div>
+
+            </div>
+        </form>
+
+        <br>
+
         <div id="response" role="alert"></div>
 
         <table class="table table-hover">

@@ -44,8 +44,8 @@ body {
   align-items: center;
   border-radius: 3px;
   background-color: #e9ecef;
-  width: 80px;
-  height: 80px;
+  width: 75px;
+  height: 75px;
   margin: 5px;
 }
 
@@ -188,7 +188,7 @@ a {
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 1rem;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 
 .navbar img {

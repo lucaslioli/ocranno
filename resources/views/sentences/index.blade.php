@@ -42,8 +42,8 @@
                     <th scope="col">Sentence</th>
                     <th scope="col">Word</th>
                     <th scope="col">Observations</th>
-                    <th scope="col" class="text-center">Page ID</th>
-                    <th scope="col" class="text-center">Actions</th>
+                    <th scope="col" class="text-center">Page</th>
+                    <th scope="col" class="text-center s-actions">Actions</th>
                 </tr>
             </thead>
             <tbody>

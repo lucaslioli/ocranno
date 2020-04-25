@@ -307,3 +307,7 @@ a {
   width: 100%;
   height: calc(100vh - 360px);
 }
+
+.s-actions {
+  min-width: 100px;
+}

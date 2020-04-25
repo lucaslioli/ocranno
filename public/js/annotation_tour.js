@@ -9,29 +9,26 @@
         {
             'next .navbar-all-brand' : "Welcome to OCRAnno! Let me guide you through its features." 
         },{
-            'next .nav-link:eq(1)' : "After complete any annotation, you can see and edit all them by<br>"+
-                "clicking the menu item 'My Annotations'"
+            'next .nav-link:eq(1)' : "You can see and edit your annotations by clicking on 'My Annotations'"
         },{
-            'next .annotation-info' : "Here you will see informations about the sentence<br>"+
-            "you are annotating, as your progress in the current page."
+            'next .annotation-info' : "Here you will see information about the sentence you are<br>"+
+            "annotating, as your progress in the current page."
         },{
-            'next #sentence' : "This is the orginal sentence extracted from PDF on the left.<br>"+
-            "Tip: You can use <text style='color: #00a6eb'>'Ctrl+F'</text> and search "+
+            'next #sentence' : "This is the orginal sentence extracted from the PDF on the left.<br>"+
+            "<u>Tip:</u> You can use <text style='color: #00a6eb'>'Ctrl+F'</text> and search "+
             "for the sentence to identify <br>where it occurs on the page."
         },{
-            'key #correction' : "This is the field where you will annotate the correction.<br>"+
-            "Please, correct (if necessary) and press 'TAB'<br> to continue the tour!",
+            'key #correction' : "This is the field where you can edit the sentence to correct it.<br>"+
+            "Please, correct it (if necessary) and press 'TAB'<br> to continue the tour!",
             'keyCode': 9
         },{
-            'next #observation' : "In this field, you can left a note about the annotation,<br>"+
-            "if you think that is necessary."
+            'next #observation' : "In this field, you can write a comment about the annotation,<br>if you wish."
         },{
             'next #btn-illgebible' : "Now, if the original document is of poor quality and impossible<br>"+
-                "to read, you can classify it as illegible, and undo it by editing the annotation.<br>"+
-                "<i>For now, just continue.</i>"
+                "to read, you can classify it as illegible."
         },{
-            'click #btn-submit' : "Finally, you can click at the 'Submit' button to properly make<br>"+
-                "your annotation, and complete the tour! Thanks <i class='fas fa-laugh-wink'></i>"
+            'click #btn-submit' : "Finally, you can click on the 'Submit' button to save your<br>"+
+                "annotation and complete the tour! Thanks!"
         }
     ];
 

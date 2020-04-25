@@ -53,7 +53,7 @@
                 <tr id="tr-{{ $sentence->id }}">
                     <td>{{ $sentence->id }}</td>
                     <td>
-                        {{ $sentence->sentence }}
+                        {{ Str::of($sentence->sentence)->limit(120) }}
                     
                         <footer class="blockquote-footer">
                             <strong>Correction:</strong> <i>{{ $sentence->correction }}</i>

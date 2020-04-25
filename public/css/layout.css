@@ -305,7 +305,7 @@ a {
 
 .box-pdf-file {
   width: 100%;
-  height: calc(100vh - 360px);
+  height: 600px; /* calc(100vh - 360px) */
 }
 
 .s-actions {

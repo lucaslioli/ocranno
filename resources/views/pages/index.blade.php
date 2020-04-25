@@ -40,8 +40,9 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">File name</th>
-                    <th scope="col">Words</th>
-                    <th scope="col">Errors</th>
+                    <th scope="col" class="text-center">Words</th>
+                    <th scope="col" class="text-center">Errors</th>
+                    <th scope="col" class="text-center">User</th>
                     <th scope="col" class="text-center">Annotations</th>
                     <th scope="col" class="text-center">Actions</th>
                 </tr>
@@ -53,8 +54,9 @@
                 <tr>
                     <th scope="row">{{ $page->id }}</th>
                     <td>{{ $page->file_name }}</td>
-                    <td class="text-muted">{{ $page->words_number }}</td>
-                    <td class="text-muted">{{ $page->wrong_words }}</td>
+                    <td class="text-muted text-center">{{ $page->words_number }}</td>
+                    <td class="text-muted text-center">{{ $page->wrong_words }}</td>
+                    <td class="text-muted text-center">{{ $page->user_id }}</td>
                     <td class="text-center">
                         @if ($page->annotations == $page->wrong_words)
                             <span class="badge badge-success badge-pill">Complete</span>

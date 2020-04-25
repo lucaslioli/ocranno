@@ -29,6 +29,7 @@
                 <div class="custom-file">
                     <input type="file" class="custom-file-input" id="json_file" name="json_file" value="{{ old('json_file') }}" required>
                     <label class="custom-file-label" for="json_file">Select a JSON file (recomended size of 2M)</label>
+                    <p class="text-muted">*If there are repeated pages, they will be ignored</p>
                 </div>
 
                 @error('json_file')

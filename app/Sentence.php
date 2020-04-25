@@ -24,8 +24,9 @@ class Sentence extends Model
         return $this->belongsTo(Page::class);
     }
 
-    public function set_attributes($sentence, $page_id){
+    public function set_attributes($sentence, $word, $page_id){
         $this->sentence = $sentence;
+        $this->word = $word;
         $this->page_id = $page_id;
 
         $this->save();

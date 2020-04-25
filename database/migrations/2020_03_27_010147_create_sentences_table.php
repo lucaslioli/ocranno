@@ -15,12 +15,13 @@ class CreateSentencesTable extends Migration
     {
         Schema::create('sentences', function (Blueprint $table) {
             $table->id();
+            $table->string('word');
             $table->text('sentence');
             $table->text('correction')->nullable();
             $table->text('observation')->nullable();
             $table->foreignId('page_id')
                 ->constrained()
-                ->onDelete('cascade');;
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

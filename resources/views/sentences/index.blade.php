@@ -40,6 +40,7 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Sentence</th>
+                    <th scope="col">Word</th>
                     <th scope="col">Observations</th>
                     <th scope="col" class="text-center">Page ID</th>
                     <th scope="col" class="text-center">Actions</th>
@@ -57,6 +58,9 @@
                         <footer class="blockquote-footer">
                             <strong>Correction:</strong> <i>{{ $sentence->correction }}</i>
                         </footer>
+                    </td>
+                    <td class="text-muted">
+                        {{ Str::of($sentence->word)->limit(20) }}
                     </td>
                     <td class="text-muted">
                         {{ Str::of($sentence->observation)->limit(20) }}

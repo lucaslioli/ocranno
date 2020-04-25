@@ -4,17 +4,26 @@
         "words_number": 502,
         "wrong_words": 32,
         "sentences": [
-            {"sentence": "some sentence with a err0r inserted"},
-            {"sentence": "another sentence w1th an extraction error"}
+            {
+                "sentence": "some sentence with a err0r inserted",
+                "word": "err0r"
+            },{
+                "sentence": "another sentence w1th an extraction error",
+                "word": "w1th"
+            }
         ]
-    },
-    {
+    },{
         "file_name": "another_page_name.pdf",
         "words_number": 354,
         "wrong_words": 26,
         "sentences": [
-            {"sentence": "the third santence with a error"},
-            {"sentence": "this sentence hes a wrong word"}
+            {
+                "sentence": "the third santence with a error",
+                "word": "santence"
+            },{
+                "sentence": "thls sentence has a wrong word",
+                "word": "thls"
+            }
         ]
     }
 ]

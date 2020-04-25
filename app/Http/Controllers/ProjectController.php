@@ -77,6 +77,7 @@ class ProjectController extends Controller
 
                 $new_sentence->set_attributes(
                     $sentence['sentence'],
+                    $sentence['word'],
                     $new_page->id
                 );
             }

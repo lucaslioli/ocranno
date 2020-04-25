@@ -11,8 +11,8 @@
         },{
             'next .nav-link:eq(1)' : "You can see and edit your annotations by clicking on 'My Annotations'"
         },{
-            'next .annotation-info' : "Here you will see information about the sentence you are<br>"+
-            "annotating, as your progress in the current page."
+            'next .annotation-info' : "Here you see information about the sentence you are<br>"+
+            "annotating, and your progress in the current page."
         },{
             'next #sentence' : "This is the orginal sentence extracted from the PDF on the left.<br>"+
             "<u>Tip:</u> You can use <text style='color: #00a6eb'>'Ctrl+F'</text> and search "+

@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('role')->default('default');
+            $table->boolean('tour')->default(true);
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
@@ -28,6 +29,7 @@ class CreateUsersTable extends Migration
             'name' => env('ADMIN_NAME'),
             'email' => env('ADMIN_EMAIL'),
             'role' => 'admin',
+            'tour' => false,
             'password' => bcrypt(env('ADMIN_PASSWORD')),
             'created_at' => date('Y-m-d H:i:s')
         ]);

@@ -46,5 +46,6 @@ Route::delete('/sentences/{sentence}', 'SentenceController@destroy')->name('sent
 Route::get('/annotations', 'AnnotationController@index')->name('annotations.index');
 Route::get('/annotations/create', 'AnnotationController@create')->name('annotations.create');
 Route::get('/annotations/search', 'AnnotationController@search')->name('annotations.search');
+Route::get('/annotations/tour', 'AnnotationController@tour')->name('annotations.tour');
 Route::get('/annotations/{sentence}/edit', 'AnnotationController@edit')->name('annotations.edit');
 Route::put('/annotations/{sentence}', 'AnnotationController@update');

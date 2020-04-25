@@ -48,4 +48,10 @@ class User extends Authenticatable
     {
         return $this->role === self::ADMIN_ROLE;
     }
+
+    public function setTour($tour = false)
+    {
+        $this->tour = $tour;
+        $this->save();
+    }
 }

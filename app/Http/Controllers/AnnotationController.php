@@ -121,6 +121,20 @@ class AnnotationController extends Controller
 
         $sentence->annotate(request('correction'), request('observation'));
 
+        Auth::user()->setTour(true);
+
+        return redirect(route('annotations.create'));
+    }
+
+    /**
+     * Changes user tour control to allows the annotation guide
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function tour()
+    {
+        Auth::user()->setTour(false);
+
         return redirect(route('annotations.create'));
     }
 }

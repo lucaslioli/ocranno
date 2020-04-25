@@ -26,7 +26,7 @@
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light bg-gray">
             <div class="container justify-content-between">
-                <div>
+                <div class="navbar-all-brand">
                     <a class="navbar-brand" href="/">
                         <img src="{{ asset('logo.png') }}" alt="logo">
                     </a>
@@ -84,6 +84,10 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('annotations.tour') }}">
+                                        <i class="fas fa-map-signs"></i> Annotation tour
+                                    </a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">

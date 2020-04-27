@@ -53,7 +53,13 @@
 
                 <tr>
                     <th scope="row">{{ $page->id }}</th>
-                    <td>{{ $page->file_name }}</td>
+                    <td>
+                        @if(file_exists(public_path()."/pdfs/".$page->file_name))
+                            <a href="/pdfs/{{ $page->file_name }}" target="blank">{{ str::of($page->file_name)->limit(100) }}</a>
+                        @else
+                            {{ Str::of($page->file_name)->limit(100) }}
+                        @endif
+                    </td>
                     <td class="text-muted text-center">{{ $page->words_number }}</td>
                     <td class="text-muted text-center">{{ $page->wrong_words }}</td>
                     <td class="text-muted text-center">{{ $page->user_id }}</td>

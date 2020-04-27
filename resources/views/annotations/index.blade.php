@@ -65,7 +65,7 @@
 
             @empty
                 <tr>
-                    <td colspan="4" class="text-center">
+                    <td colspan="5" class="text-center">
                         <i class="fas fa-ban"></i> No annotations have been made yet.
                     </td>
                 </tr>

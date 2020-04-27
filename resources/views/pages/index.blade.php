@@ -49,7 +49,7 @@
             </thead>
             <tbody>
 
-            @foreach ($pages as $page)
+            @forelse ($pages as $page)
 
                 <tr>
                     <th scope="row">{{ $page->id }}</th>
@@ -91,8 +91,15 @@
                         </a>
                     </td>
                 </tr>
+
+            @empty
+                <tr>
+                    <td colspan="7" class="text-center">
+                        <i class="fas fa-ban"></i> No pages found.
+                    </td>
+                </tr>
                 
-            @endforeach
+            @endforelse
 
             </tbody>
         </table>

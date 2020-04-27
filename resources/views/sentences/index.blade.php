@@ -48,7 +48,7 @@
             </thead>
             <tbody>
 
-            @foreach ($sentences as $sentence)
+            @forelse ($sentences as $sentence)
 
                 <tr id="tr-{{ $sentence->id }}">
                     <td>{{ $sentence->id }}</td>
@@ -76,8 +76,15 @@
                         </a>
                     </td>
                 </tr>
+
+            @empty
+                <tr>
+                    <td colspan="6" class="text-center">
+                        <i class="fas fa-ban"></i> No sentences found.
+                    </td>
+                </tr>
                 
-            @endforeach
+            @endforelse
 
             </tbody>
         </table>

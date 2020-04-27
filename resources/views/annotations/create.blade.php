@@ -69,9 +69,9 @@
 
                     <div class="form-group">
                         <small id="findHelpBlock" class="form-text text-muted">
-                            *If the sentence is correct, just click on submit<br>
+                            *If the sentence is correct, just click on submit.<br>
                             **Since our goal is to improve the quality of the extracted text in relation to the original contents, please,
-                            do not correct typos found in the PDF itself. The corrected version should match the PDF
+                            do not correct typos found in the PDF itself. The corrected version should match the PDF.
                         </small>
                     </div>
 

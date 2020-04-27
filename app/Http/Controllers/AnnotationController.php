@@ -28,6 +28,7 @@ class AnnotationController extends Controller
     {
         $sentences = Sentence::whereNotNull('correction')
             ->whereIn('page_id', Auth::user()->pages->map->id)
+            ->orderBy('updated_at', 'desc')
             ->paginate(15);
         
         return view('annotations.index', compact('sentences'));

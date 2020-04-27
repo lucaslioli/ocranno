@@ -55,7 +55,7 @@
                     <th scope="row">{{ $page->id }}</th>
                     <td>
                         @if(file_exists(public_path()."/pdfs/".$page->file_name))
-                            <a href="/pdfs/{{ $page->file_name }}" target="blank">{{ str::of($page->file_name)->limit(100) }}</a>
+                            <a href="/pdfs/{{ $page->file_name }}" target="blank">{{ Str::of($page->file_name)->limit(100) }}</a>
                         @else
                             {{ Str::of($page->file_name)->limit(100) }}
                         @endif

@@ -54,7 +54,7 @@
                     <div class="col-md-4">
                         <div class="card mb-4 box-shadow">
                             <div class="card-body">
-                                <h5 class="card-title">Set document as illegible</h5>
+                                <h5 class="card-title">Set sentence as illegible</h5>
                                 <p class="card-text">If the original document is of poor quality and impossible to read, 
                                     annotators can classify it as illegible.
                                 </p>

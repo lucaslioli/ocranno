@@ -10,7 +10,7 @@ class Sentence extends Model
 
     public function annotate($correction, $observation = NULL)
     {
-        if($this->correction == null)
+        if($this->correction == null && $this->illegible == false)
             $this->page->increment_annotations();
 
         $this->correction = $correction;
@@ -29,6 +29,12 @@ class Sentence extends Model
         $this->word = $word;
         $this->page_id = $page_id;
 
+        $this->save();
+    }
+
+    public function set_illegible($illegible = true)
+    {
+        $this->illegible = $illegible;
         $this->save();
     }
 }

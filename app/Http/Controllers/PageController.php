@@ -75,6 +75,7 @@ class PageController extends Controller
 
     public function illegible(Page $page)
     {
+        // If it's illegible, will become legible
         if($page->illegible){
             $page->set_user(null);
         }

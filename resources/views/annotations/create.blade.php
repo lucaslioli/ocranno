@@ -84,12 +84,12 @@
 
                             <button type="submit" class="btn btn-primary col-6" id="btn-submit"><i class="fas fa-check"></i> Submit</button>
 
-                            @if($page->illegible)
-                                <a href="{{ route('pages.illegible', $page) }}" class="btn btn-danger col-5" id="btn-illgebible" title="Set page as legible">
+                            @if($sentence->illegible)
+                                <a href="{{ route('annotations.illegible', $sentence) }}" class="btn btn-danger col-5" id="btn-illgebible" title="Set sentence as legible">
                                     <i class="fas fa-eye"></i> Legible
                                 </a>
                             @else
-                                <a href="{{ route('pages.illegible', $page) }}" class="btn btn-outline-danger col-5" id="btn-illgebible" title="Set page as illegible">
+                                <a href="{{ route('annotations.illegible', $sentence) }}" class="btn btn-outline-danger col-5" id="btn-illgebible" title="Set sentence as illegible">
                                     <i class="fas fa-eye-slash"></i> Illegible
                                 </a>
                             @endif

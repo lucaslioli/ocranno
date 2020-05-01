@@ -26,7 +26,10 @@ class AnnotationController extends Controller
      */
     public function index()
     {
-        $sentences = Sentence::whereNotNull('correction')
+        $sentences = Sentence::where(function ($query) {
+            $query->whereNotNull('correction')
+                ->orWhere('illegible', true);
+            })
             ->whereIn('page_id', Auth::user()->pages->map->id)
             ->orderBy('updated_at', 'desc')
             ->paginate(15);
@@ -83,6 +86,7 @@ class AnnotationController extends Controller
         // Get the first sentence that can be annotated
         $sentence = Sentence::where([
                 ['correction', null],
+                ['illegible', false],
                 ['page_id', $page->id]
             ])->first();
 
@@ -137,5 +141,20 @@ class AnnotationController extends Controller
         Auth::user()->setTour(false);
 
         return redirect(route('annotations.create'));
+    }
+
+    public function illegible(Sentence $sentence)
+    {
+        // If it's illegible, will become legible
+        if($sentence->corretion == null){
+            if($sentence->illegible)
+                $sentence->page->dencrement_annotations();
+            else
+                $sentence->page->increment_annotations();
+        }
+
+        $sentence->set_illegible(!$sentence->illegible);
+
+        return back();
     }
 }

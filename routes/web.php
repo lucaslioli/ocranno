@@ -48,4 +48,5 @@ Route::get('/annotations/create', 'AnnotationController@create')->name('annotati
 Route::get('/annotations/search', 'AnnotationController@search')->name('annotations.search');
 Route::get('/annotations/tour', 'AnnotationController@tour')->name('annotations.tour');
 Route::get('/annotations/{sentence}/edit', 'AnnotationController@edit')->name('annotations.edit');
+Route::get('/annotations/{sentence}/illegible', 'AnnotationController@illegible')->name('annotations.illegible');
 Route::put('/annotations/{sentence}', 'AnnotationController@update');

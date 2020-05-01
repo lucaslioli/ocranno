@@ -43,7 +43,7 @@
                     <th scope="col">Word</th>
                     <th scope="col">Observations</th>
                     <th scope="col" class="text-center">Page</th>
-                    <th scope="col" class="text-center s-actions">Actions</th>
+                    <th scope="col" class="text-center action-column">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -70,6 +70,17 @@
                         <a href="{{ route('annotations.edit', $sentence) }}" class="btn btn-sm btn-outline-secondary" title="Edit annotation">
                             <i class="fas fa-edit"></i>
                         </a>
+
+                        @if($sentence->illegible)
+                            <a href="{{ route('annotations.illegible', $sentence) }}" class="btn btn-sm btn-secondary" title="Set sentence as legible">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                        @else
+                            <a href="{{ route('annotations.illegible', $sentence) }}" class="btn btn-sm btn-outline-secondary" title="Set sentence as illegible">
+                                <i class="fas fa-eye-slash"></i>
+                            </a>
+                        @endif
+
                         <a href="{{ route('sentences.destroy', $sentence) }}" class="btn btn-sm btn-outline-danger" 
                             id="deleteSentence" data-id="{{ $sentence->id }}" title="Delete sentence">
                             <i class="fas fa-trash"></i>

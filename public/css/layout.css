@@ -308,6 +308,6 @@ a {
   height: 590px; /* calc(100vh - 360px) */
 }
 
-.s-actions {
-  min-width: 100px;
+.action-column {
+  min-width: 130px;
 }

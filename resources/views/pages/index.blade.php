@@ -44,7 +44,7 @@
                     <th scope="col" class="text-center">Errors</th>
                     <th scope="col" class="text-center">User</th>
                     <th scope="col" class="text-center">Annotations</th>
-                    <th scope="col" class="text-center">Actions</th>
+                    <th scope="col" class="text-center action-column">Actions</th>
                 </tr>
             </thead>
             <tbody>

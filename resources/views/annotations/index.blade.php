@@ -35,6 +35,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Sentence</th>
                     <th scope="col">Observations</th>
+                    <th scope="col" class="text-center">Legibility</th>
                     <th scope="col" class="text-center">Page ID</th>
                     <th scope="col" class="text-center s-actions">Actions</th>
                 </tr>
@@ -54,6 +55,13 @@
                     </td>
                     <td class="text-muted">
                         {{ Str::of($sentence->observation)->limit(20) }}
+                    </td>
+                    <td class="text-muted text-center">
+                        @if($sentence->illegible)
+                            <i class="fas fa-eye-slash"></i>
+                        @else
+                            <i class="fas fa-eye"></i>
+                        @endif
                     </td>
                     <td class="text-muted text-center">{{ $sentence->page_id }}</td>
                     <td class="text-center">

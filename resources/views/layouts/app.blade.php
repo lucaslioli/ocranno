@@ -52,11 +52,11 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item {{ Request::is('annotations.create') ? 'active' : '' }}">
+                            <li class="nav-item {{ Request::is('annotations/create') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ route('annotations.create') }}">Annotation</a>
                             </li>
 
-                            <li class="nav-item {{ Request::is('annotations.index') ? 'active' : '' }}">
+                            <li class="nav-item {{ Request::is('annotations') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ route('annotations.index') }}">My annotations</a>
                             </li>
 

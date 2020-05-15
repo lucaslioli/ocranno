@@ -19,6 +19,7 @@ class CreateSentencesTable extends Migration
             $table->text('sentence');
             $table->text('correction')->nullable();
             $table->text('observation')->nullable();
+            $table->boolean('illegible')->default(false);
             $table->foreignId('page_id')
                 ->constrained()
                 ->onDelete('cascade');

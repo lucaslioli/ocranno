@@ -20,7 +20,7 @@ To run the project you will need to have installed [Composer](https://getcompose
 
 ### Database
 
-The database ER diagram, generated considering default Laravel tables, can be found in [documentation/db-model.png](ocranno/documentation/db-model.png). The creation of all tables is made with Laravel migrations during the project initialization, except the own database that has to be created manually.
+The database ER diagram, generated considering default Laravel tables, can be found in [documentation/db-model.png](documentation/db-model.png). The creation of all tables is made with Laravel migrations during the project initialization, except the own database that has to be created manually.
 
 ## How to run the project
 

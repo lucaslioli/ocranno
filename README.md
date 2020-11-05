@@ -14,9 +14,13 @@ OCRAnno is a text annotation tool designed to provide annotated data to improve 
 
 ## Requirements and tools
 
-OCRAnno was developed using the open-source PHP web framework, Laravel 7.0. The requirements are the same as the framework, found in the [documentation (version 7.x)](https://laravel.com/docs/7.x). Laravel has support to different databases, the chosen one was [MySQL](https://www.mysql.com/).
+OCRAnno was developed using the MVC open-source PHP web framework, Laravel 7.0. The requirements are the same as the framework, found in the [documentation (version 7.x)](https://laravel.com/docs/7.x). Laravel has support to different databases, the chosen one was [MySQL](https://www.mysql.com/).
 
 To run the project you will need to have installed [Composer](https://getcomposer.org/).
+
+### Database
+
+The database ER diagram, generated considering default Laravel tables, can be found in [documentation/db-model.png](ocranno/documentation/db-model.png). The creation of all tables is made with Laravel migrations during the project initialization, except the own database that has to be created manually.
 
 ## How to run the project
 

@@ -42,7 +42,7 @@ This [link](https://gist.github.com/hootlex/da59b91c628a6688ceb1) may provide ex
 
 ## User information
 
-With the system running, the user will find a interactive tour in the first access (which can be accessed again later) providing the necessary information to follow up with the annotations. The admin user has the same functionalities as the default user, but also has controller with CRUD operations over the documents, it also can list and search all users, documents and sentences.
+With the system running, the user will find a interactive tour in the first access (which can be accessed again later if need) providing the necessary information to follow up with the annotations. The admin user has the same functionalities as the default user, but also has controller with CRUD operations over the documents, it also can list and search all users, documents and sentences. There are some screenshots available in ```documentation/``` folder, where the menu links 'Sentences', 'Pages', 'Project' and 'Users' are restrict admin areas.
 
 ## Extra information
 

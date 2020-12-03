@@ -1,6 +1,6 @@
 # OCRAnno - OCR text annotation tool
 
-OCRAnno is a text annotation tool designed to provide annotated data to improve the results of OCR systems. OCRAnno is being developed as part of a collaboration between the Institute of Informatics at UFRGS and Petrobras.
+OCRAnno is a text annotation tool designed to provide annotated data to improve the results of OCR systems. These annotations will help us to create the ground-truth that will be used to train machine learning models that will automatically correct OCR-ed text. OCRAnno is being developed as part of a collaboration between the Institute of Informatics at UFRGS and Petrobras.
 
 ## Functionalities
 
